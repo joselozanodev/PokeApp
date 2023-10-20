@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Home.css";
+import "./home.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrder, setFilter, setCurrentPage } from "../../redux/pokemonSlice";

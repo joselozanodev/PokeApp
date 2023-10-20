@@ -4,7 +4,7 @@ import searchSVG from '../../assets/search-icon.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPokemonSearch, setCurrentPage } from '../../redux/pokemonSlice'
 import { useState } from 'react'
-import './NavBar.css'
+import './navBar.css'
 
 const NavBar = ({onSearch}) => {
     const [name, setName] = useState('')

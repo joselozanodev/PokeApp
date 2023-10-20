@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Form.css";
+import "./form.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPokemon } from "../../redux/pokemonSlice";
