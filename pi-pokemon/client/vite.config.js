@@ -3,5 +3,11 @@ import react from '@vitejs/plugin-react-swc'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/PokeApp/"
+  base: "/PokeApp/",
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: 'client/src/main.jsx'
+    }
+  }
 })
