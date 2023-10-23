@@ -19,7 +19,8 @@ const getAllDbPokemons = async () => {
         pokemonName,
         pokemonStats,
         pokemonSprite,
-        pokemonTypes
+        pokemonTypes,
+        pokemonCreated: true,
       }
       return pokemonData;
     })

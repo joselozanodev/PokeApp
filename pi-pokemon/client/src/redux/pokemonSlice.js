@@ -27,12 +27,30 @@ const pokemonSlice = createSlice({
       state.pokedex.push(action.payload);
       state.allPokemons.push(action.payload);
     },
+    updatePokemon: (state, action) => {
+      state.pokedex = state.pokedex.map((pokemon) => {
+        if (pokemon.pokemonName === action.payload.name) {
+          pokemon = action.payload;
+          return pokemon;
+        } else {
+          return pokemon;
+        }
+      });
+      state.allPokemons = state.allPokemons.map((pokemon) => {
+        if (pokemon.pokemonName === action.payload.name) {
+          pokemon = action.payload;
+          return pokemon;
+        } else {
+          return pokemon;
+        }
+      });
+    },
     removePokemon: (state, action) => {
-      state.pokemon = state.pokemon.filter(
-        (pokemon) => pokemon.id !== action.payload
+      state.pokedex = state.pokedex.filter(
+        (pokemon) => pokemon.pokemonName !== action.payload
       );
       state.allPokemons = state.allPokemons.filter(
-        (pokemon) => pokemon.id !== action.payload
+        (pokemon) => pokemon.pokemonName !== action.payload
       );
     },
     setTypes: (state, action) => {
@@ -77,7 +95,7 @@ const pokemonSlice = createSlice({
         state.pokedex = state.allPokemons.filter(
           (pokemon) => pokemon.pokemonId
                        ?typeof pokemon.pokemonId === "string"
-                       :pokemon.pokemonSprite.length <= 1
+                       :pokemon.pokemonCreated === true
         );
       }else if(state.filter.includes("type")){
         state.pokedex = state.allPokemons.filter(
@@ -104,5 +122,6 @@ export const {
   setPokemonsPerPage,
   setPokemonSearch,
   setTypes,
+  updatePokemon
 } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

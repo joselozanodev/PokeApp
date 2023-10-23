@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import "./form.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemon } from "../../redux/pokemonSlice";
+import { addPokemon, setCurrentPage} from "../../redux/pokemonSlice";
 import { validateForm } from "./validateForm";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Form = () => {
-  const pokemonList = useSelector((state) => state.pokemon.allPokemons);
   const [errors, setErrors] = useState({});
   const types = useSelector((state) => state.pokemon.types)
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [pokemon, setPokemon] = useState({
     name: "",
+    image: "",
     hp: "",
     attack: "",
     defense: "",
@@ -21,7 +21,6 @@ const Form = () => {
     height: "",
     weight: "",
     types: [],
-    image: "",
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,17 +31,12 @@ const Form = () => {
       [target.name]: target.value,
     });
 
-    if (target.name === "types") {
-      setPokemon({
-        ...pokemon,
-        types: target.value.split(","),
-      });
-    } else {
+    
       setPokemon({
         ...pokemon,
         [target.name]: target.value,
       });
-    }
+    
 
     setErrors({
       ...errors,
@@ -63,6 +57,10 @@ const Form = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(selectedTypes.length === 0){
+      alert('You must select at least one type')
+      return
+    }
     try {
       const pokemon = {
         name: event.target.name.value,
@@ -86,7 +84,8 @@ const Form = () => {
         ],
         pokemonHeight: event.target.height.value,
         pokemonWeight: event.target.weight.value,
-        pokemonTypes: selectedTypes, // cambiar "types" por "type"
+        pokemonTypes: selectedTypes,
+        pokemonCreated: true,
       };
       const response = await axios.post(
         "http://localhost:3001/pokemon",
@@ -95,12 +94,14 @@ const Form = () => {
       if (response) {
         dispatch(addPokemon(pokemonRedux));
         alert("Pokemon created");
+        navigate("/home");
+        dispatch(setCurrentPage(1));
       }
     } catch (error) {
       console.log(error.response.data);
       alert("Pokemon not created");
     }
-    navigate("/home");
+   
   };
 
   useEffect(()=>{
@@ -209,7 +210,6 @@ const Form = () => {
               })}
           </div>
           </div>
-          
 
           {errors.types && <p className="error">{errors.types}</p>}
 

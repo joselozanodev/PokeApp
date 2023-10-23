@@ -35,7 +35,7 @@ const NavBar = ({onSearch}) => {
             <h1 id='nav-title'>PokeApp</h1>
             <div className='links'>
                 <Link to={'/home'} className='link'>Home</Link>
-                <Link to={'/form'} className='link'>Create</Link>
+                <Link to={'/create'} className='link'>Create</Link>
             </div>
             <div className='searchBar'>
                 <input 

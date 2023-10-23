@@ -167,4 +167,22 @@ hr{
     border-radius: 4px 0px 0px 4px;
 }
 
+.delete-btn{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 4px;
+    background-color: var(--keppel-100);
+    color: var(--keppel-500);
+    border: none;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
 
+.delete-btn:hover{
+    background-color: var(--keppel-700);
+    color: var(--keppel-100);
+}

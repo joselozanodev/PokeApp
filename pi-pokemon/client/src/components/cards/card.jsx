@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentPage } from "../../redux/pokemonSlice";
 import "./card.css";
 
 
-const Card = ({ id, name, types, sprite }) => {
+const Card = ({ id, name, types, sprite, created}) => {
   const navigate = useNavigate();
- 
+  const dispatch = useDispatch();
   const handleOnClick = () => {
       if(id){
         navigate(`/detail/${id}`);
+        dispatch(setCurrentPage(1));
       }else{
         navigate(`/detail/${name}`);
+        dispatch(setCurrentPage(1));
       }
   };
 

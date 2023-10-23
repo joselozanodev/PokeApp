@@ -1,17 +1,39 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import "./detail.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { removePokemon, setCurrentPage } from "../../redux/pokemonSlice";
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [pokeDetail, setPokeDetail] = useState([]);
   const [types, setTypes] = useState([]);
   const pokedex = useSelector((state) => state.pokemon.pokedex);
   const pokemon = pokedex.find((pokemon) => pokemon.pokemonId === id);
-  const pokemonTypes = pokemon?.pokemonTypes;
+  const pokemonByName = pokedex.find((pokemon) => pokemon.pokemonName === id);
+  const pokemonTypesByName = pokemonByName?.pokemonTypes
+  const pokemonName = pokeDetail.name;
+
+  const handleDelete = async(event)=>{
+    event.preventDefault();
+    try {
+      const { data } = await axios.delete(`http://localhost:3001/pokemon/${pokemonName}`);
+      if(data === 'Pokemon Deleted Successfully'){
+        dispatch(setCurrentPage(1));
+        dispatch(removePokemon(pokemonName))
+        navigate('/home');
+        alert('Pokemon deleted successfully');
+      }
+    } catch (error) {
+      console.log(error.response.data)
+      alert('Pokemon not deleted')
+    }
+  }
 
   const handleImageError = ({ target }) => {
     target.src = "https://m.media-amazon.com/images/I/71WkWKFRSWL.png";
@@ -22,19 +44,15 @@ const Detail = () => {
       if(typeof id === 'string' && !id.includes('-')){
         const response = await axios.get(`http://localhost:3001/pokemon/?name=${id}`);
         setPokeDetail(response.data);
-        setTypes(pokemonTypes);
+        setTypes(pokemonTypesByName);
         return;
       }
       const response = await axios.get(`http://localhost:3001/pokemon/${id}`);
       setPokeDetail(response.data);
-      setTypes(pokemonTypes);
+      setTypes(pokemon?.pokemonTypes);
     }
     fetchData();
   }, [id]); 
-
-  useEffect(()=>{
-    console.log(types)
-  },[])
 
   const typeColors = {
     normal: "#A8A878",
@@ -62,7 +80,7 @@ const Detail = () => {
       typeColors[
         pokeDetail.types
           ? pokeDetail.types[0].type.name.toLowerCase()
-          : "normal"
+          : pokemonTypesByName?pokemonTypesByName[0].toLowerCase():types?.[0]
       ]
     }`,
   };
@@ -71,7 +89,7 @@ const Detail = () => {
       typeColors[
         pokeDetail.types
           ? pokeDetail.types[0].type.name.toLowerCase()
-          : "normal"
+          : pokemonTypesByName?pokemonTypesByName[0].toLowerCase():types?.[0]
       ]
     }`,
   };
@@ -80,7 +98,7 @@ const Detail = () => {
       typeColors[
         pokeDetail.types
           ? pokeDetail.types[0].type.name.toLowerCase()
-          : "normal"
+          : pokemonTypesByName?pokemonTypesByName[0].toLowerCase():types?.[0]
       ]
     }`,
   };
@@ -190,6 +208,16 @@ const Detail = () => {
                 );
               })}
           </div>
+        {
+          pokemon?.pokemonCreated
+          ? <button className="delete-btn" onClick={handleDelete}>Delete</button>
+          : pokemonByName && <button className="delete-btn" onClick={handleDelete}>Delete</button>
+        }
+        {
+          pokemon?.pokemonCreated
+          ? <Link to={`/edit/${pokemonName}`}><button>Edit</button></Link>
+          : pokemonByName &&  <Link to={`/edit/${pokemonName}`}><button>Edit</button></Link>
+        }
         </div>
       </div>
     </>

@@ -10,6 +10,7 @@ import Form from "./components/form/Form";
 import { useDispatch, useSelector} from "react-redux";
 import { setPokemonList, setPokemonSearch, setTypes } from "./redux/pokemonSlice";
 import Error from "./components/NotFound/Error";
+import UpdateForm from "./components/form/UpdateForm";
 
 function Loading() {
   const [dots, setDots] = useState(0);
@@ -85,7 +86,8 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/form" element={<Form />} />
+            <Route path="/create" element={<Form />} />
+            <Route path="/edit/:name" element={<UpdateForm />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </>

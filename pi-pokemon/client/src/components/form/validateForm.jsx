@@ -54,10 +54,6 @@ export const validateForm = (pokemon) => {
     errors.weight = 'Weight must be a number'
   }
 
-  if (pokemon.types.length === 0) {
-    errors.types = "Types are required";
-  }
-
   if (!pokemon.image.trim()) {
     errors.image = "Image is required";
   } else if (!/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(pokemon.image)) {

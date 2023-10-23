@@ -121,6 +121,7 @@ const Home = () => {
                 pokemonWeight,
                 pokemonHeight,
                 pokemonMoves,
+                pokemonCreated,
               },
               index
             ) => {
@@ -136,6 +137,7 @@ const Home = () => {
                   weight={pokemonWeight}
                   height={pokemonHeight}
                   moves={pokemonMoves}
+                  created={pokemonCreated}
                 />
               );
             }
