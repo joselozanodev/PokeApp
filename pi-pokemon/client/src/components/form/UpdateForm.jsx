@@ -65,14 +65,13 @@ const UpdateForm = () => {
     event.preventDefault();
 
     const pokemonRedux = {
-      pokemoname: params.name,
+      pokemonName: params.name,
       pokemonStats: [pokemon.hp, pokemon.attack, pokemon.defense, pokemon.speed, pokemon.height, pokemon.weight],
       pokemonTypes: pokemon.types,
-      pokemonSprite: pokemon.image,
+      pokemonSprite: { front_default: pokemon.image },
     }
     try {
       const response = await axios.put(`http://localhost:3001/pokemon/${params?.name}`, pokemon)
-      console.log(response.data)
       if(response){
         dispatch(setCurrentPage(1))
         alert('Pokemon updated successfully')

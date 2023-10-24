@@ -113,6 +113,7 @@ const Form = () => {
       <div className="form-container">
         <h1>Create A Pokemon</h1>
         <form action="" onSubmit={handleSubmit} className="form">
+
           <label htmlFor="name">Name:</label>
           <input
             type="text"

@@ -215,8 +215,8 @@ const Detail = () => {
         }
         {
           pokemon?.pokemonCreated
-          ? <Link to={`/edit/${pokemonName}`}><button>Edit</button></Link>
-          : pokemonByName &&  <Link to={`/edit/${pokemonName}`}><button>Edit</button></Link>
+          ? <Link to={`/edit/${pokemonName}`}><button className="update-btn">Edit</button></Link>
+          : pokemonByName &&  <Link to={`/edit/${pokemonName}`}><button className="update-btn">Edit</button></Link>
         }
         </div>
       </div>

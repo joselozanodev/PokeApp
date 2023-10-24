@@ -1,6 +1,6 @@
 const { Pokemon, Type } = require("../db.js");
 
-const postPokemon = async (name, image, hp, attack, defense, speed, height, weight, types) => {
+const postPokemon = async (name,image, hp, attack, defense, speed, height, weight, types) => {
   try {
     if (
       !name ||

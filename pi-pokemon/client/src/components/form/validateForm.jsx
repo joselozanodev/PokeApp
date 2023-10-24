@@ -12,7 +12,7 @@ export const validateForm = (pokemon) => {
     errors.name = "Name must be between 3 and 50 characters";
   }
 
-  if (pokemon.hp < 0 || pokemon.hp > 500) {
+  if (pokemon.hp < 100 || pokemon.hp > 500) {
     errors.hp = "HP must be between 0 and 500";
   } else if (pokemon.hp === "") {
     errors.hp = "HP is required";
@@ -20,7 +20,7 @@ export const validateForm = (pokemon) => {
     errors.hp = "HP must be a number";
   }
 
-  if (pokemon.attack < 0 || pokemon.attack > 200) {
+  if (pokemon.attack < 5 || pokemon.attack > 200) {
     errors.attack = "Attack must be between 0 and 200";
   } else if (pokemon.attack === "") {
     errors.attack = "Attack is required";

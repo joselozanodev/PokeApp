@@ -29,17 +29,15 @@ const pokemonSlice = createSlice({
     },
     updatePokemon: (state, action) => {
       state.pokedex = state.pokedex.map((pokemon) => {
-        if (pokemon.pokemonName === action.payload.name) {
-          pokemon = action.payload;
-          return pokemon;
+        if (pokemon.pokemonName === action.payload.pokemonName) {
+          return action.payload;
         } else {
           return pokemon;
         }
       });
       state.allPokemons = state.allPokemons.map((pokemon) => {
-        if (pokemon.pokemonName === action.payload.name) {
-          pokemon = action.payload;
-          return pokemon;
+        if (pokemon.pokemonName === action.payload.pokemonName) {
+          return action.payload;
         } else {
           return pokemon;
         }
