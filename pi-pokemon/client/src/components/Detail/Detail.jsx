@@ -24,8 +24,8 @@ const Detail = () => {
     try {
       const { data } = await axios.delete(`http://localhost:3001/pokemon/${pokemonName}`);
       if(data === 'Pokemon Deleted Successfully'){
-        dispatch(setCurrentPage(1));
         dispatch(removePokemon(pokemonName))
+        dispatch(setCurrentPage(1));
         navigate('/home');
         alert('Pokemon deleted successfully');
       }

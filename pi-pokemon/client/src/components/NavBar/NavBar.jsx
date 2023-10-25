@@ -32,7 +32,7 @@ const NavBar = ({onSearch}) => {
   return (
     <>
         <div className='nav-container'>
-            <h1 id='nav-title'>PokeApp</h1>
+            <Link to={"/"} className='pokeapp-landing'><h1 id='nav-title'>PokeApp</h1></Link>
             <div className='links'>
                 <Link to={'/home'} className='link'>Home</Link>
                 <Link to={'/create'} className='link'>Create</Link>

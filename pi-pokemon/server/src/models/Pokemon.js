@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull: false,
       unique: true,
       validate:{
@@ -138,7 +138,7 @@ module.exports = (sequelize) => {
           msg: "Height must be greater than 1"//verificar si la altura es mayor a 1
         },
         max:{
-          args: [15],
+          args: [150],
           msg: "Height must be less than 15"//verificar si la altura es menor a 15
         },
       }
@@ -154,7 +154,7 @@ module.exports = (sequelize) => {
           msg: "Weight must be greater than 1"//verificar si el peso es mayor a 1
         },
         max:{
-          args: [100],
+          args: [1000],
           msg: "Weight must be less than 100"//verificar si el peso es menor a 100
         }
       }

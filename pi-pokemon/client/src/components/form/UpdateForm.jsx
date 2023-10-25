@@ -80,7 +80,7 @@ const UpdateForm = () => {
       }
     } catch (error) {
       console.log(error.message)
-      alert('Error updating pokemon')
+      alert('Checkout Fields')
     }
   }
 

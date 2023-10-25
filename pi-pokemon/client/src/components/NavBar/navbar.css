@@ -93,3 +93,7 @@
 .searchBar button:active{
     background-color: var(--keppel-600);
 }
+
+.pokeapp-landing{
+    text-decoration: none;
+}

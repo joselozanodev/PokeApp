@@ -13,7 +13,7 @@ export const validateForm = (pokemon) => {
   }
 
   if (pokemon.hp < 100 || pokemon.hp > 500) {
-    errors.hp = "HP must be between 0 and 500";
+    errors.hp = "HP must be between 100 and 500";
   } else if (pokemon.hp === "") {
     errors.hp = "HP is required";
   } else if (!/^\d+$/.test(pokemon.hp)) {
@@ -43,13 +43,13 @@ export const validateForm = (pokemon) => {
   }
 
   if (pokemon.height !== null && (pokemon.height < 1 || pokemon.height > 15)) {
-    errors.height = 'Height must be between 1 and 15'
+    errors.height = 'Height must be between 1 and 150'
   } else if (pokemon.height !== undefined && !/^\d+$/.test(pokemon.height)) {
     errors.height = 'Height must be a number'
   }
 
-  if (pokemon.weight !== null && (pokemon.weight < 1 || pokemon.weight > 100)) {
-    errors.weight = 'Weight must be between 1 and 100'
+  if (pokemon.weight !== null && (pokemon.weight < 1 || pokemon.weight > 1000)) {
+    errors.weight = 'Weight must be between 1 and 1000'
   } else if (pokemon.weight !== undefined && !/^\d+$/.test(pokemon.weight)) {
     errors.weight = 'Weight must be a number'
   }
