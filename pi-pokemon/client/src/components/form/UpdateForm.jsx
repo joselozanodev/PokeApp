@@ -69,6 +69,7 @@ const UpdateForm = () => {
       pokemonStats: [pokemon.hp, pokemon.attack, pokemon.defense, pokemon.speed, pokemon.height, pokemon.weight],
       pokemonTypes: pokemon.types,
       pokemonSprite: { front_default: pokemon.image },
+      pokemonCreated: true,
     }
     try {
       const response = await axios.put(`http://localhost:3001/pokemon/${params?.name}`, pokemon)

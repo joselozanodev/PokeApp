@@ -1,7 +1,7 @@
 export const validateForm = (pokemon) => {
   let errors = {};
 
-  if (!pokemon.name.trim()) {
+  if (!pokemon.name.trim()) {  
     errors.name = "Name is required";
   } else if (!/^[^\d]+$/g.test(pokemon.name)) {
     errors.name = "Name must be plain text";
@@ -21,7 +21,7 @@ export const validateForm = (pokemon) => {
   }
 
   if (pokemon.attack < 5 || pokemon.attack > 200) {
-    errors.attack = "Attack must be between 0 and 200";
+    errors.attack = "Attack must be between 5 and 200";
   } else if (pokemon.attack === "") {
     errors.attack = "Attack is required";
   } else if (!/^\d+$/.test(pokemon.attack)) {

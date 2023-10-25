@@ -72,7 +72,7 @@ const Form = () => {
         height: event.target.height.value,
         weight: event.target.weight.value,
         types: selectedTypes,
-      };
+      }
       const pokemonRedux = {
         pokemonName: event.target.name.value,
         pokemonSprite: { front_default: event.target.image.value },
@@ -103,10 +103,6 @@ const Form = () => {
     }
    
   };
-
-  useEffect(()=>{
-    console.log(selectedTypes)
-  },[selectedTypes])
 
   return (
     <>
@@ -225,7 +221,7 @@ const Form = () => {
           />
           {errors.image && <p className="error">{errors.image}</p>}
 
-          <button type="submit" className="submit" disabled={errors.length}>
+          <button type="submit" className="submit" disabled={errors.name || errors.hp || errors.attack || errors.defense || errors.image || selectedTypes.length <= 0 || pokemon.name === undefined || !pokemon.image || pokemon.hp === undefined || pokemon.attack === undefined || pokemon.defense === undefined}>
             Create
           </button>
         </form>

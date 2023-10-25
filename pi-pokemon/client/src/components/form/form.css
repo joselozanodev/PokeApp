@@ -87,6 +87,10 @@ form {
   background-color: #007178;
 }
 
+.form-container .submit:disabled{
+  cursor: not-allowed;
+}
+
 .selector-types{
   background-color: #fff;
   padding: 5px;
