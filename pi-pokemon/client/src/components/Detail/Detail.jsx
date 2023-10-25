@@ -42,7 +42,7 @@ const Detail = () => {
    useEffect(() => {
     async function fetchData() {
       if(typeof id === 'string' && !id.includes('-')){
-        const response = await axios.get(`http://localhost:3001/pokemon/?name=${id}`);
+        const response = await axios.get(`http://localhost:3001/pokemon/search?name=${id}`);
         setPokeDetail(response.data);
         setTypes(pokemonTypesByName);
         return;

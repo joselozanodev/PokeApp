@@ -43,7 +43,7 @@ function App() {
     const pokeName = name.toLowerCase();
     try {
       const response = await axios(
-        `http://localhost:3001/pokemon/?name=${pokeName}`
+        `http://localhost:3001/pokemon/search?name=${pokeName}`
       );
       navigate(`/detail/${response.data.id}`);
       dispatch(setPokemonSearch(allPokemons));
@@ -55,7 +55,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const responsePokemons = await axios.get("http://localhost:3001/pokemons");
+        const responsePokemons = await axios.get("http://localhost:3001/pokemon");
         const responseTypes = await axios.get("http://localhost:3001/types");
         if(types){
           dispatch(setTypes(responseTypes.data));
