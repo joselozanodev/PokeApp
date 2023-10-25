@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   pokedex: [],
   allPokemons: [],
-  details: [],
   types: [],
   order: "a-z",
   filter: "all",
